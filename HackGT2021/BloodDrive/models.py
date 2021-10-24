@@ -3,13 +3,6 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Badge(models.Model):
-    BADGES = (
-        ("ONE", "Donate 1 time"),
-        ("TEN", "Donate 10 times"),
-    )
-    badge_val = models.CharField(max_length=100, choices=BADGES)
-
 class Coupon(models.Model):
     COUPONS_OPS = (
         ("MCD", "Mcdonalds 10 off"),
@@ -24,7 +17,7 @@ class User(AbstractUser):
     times_donated = models.IntegerField(default=0)
     time_since_last = models.DateField(null=True)
     experience = models.IntegerField(default=0)
-    badges = models.ManyToManyField(Badge, blank=True)
+    badges = models.CharField(blank=True, max_length=100)
 
     REQUIRED_FIELDS = ['password', 'email',]
 
@@ -38,6 +31,7 @@ class Appointment(models.Model):
         ("BLD", "Blood"),
         ("PLS", "Plasma")
     )
+    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     center = models.ForeignKey(BloodCenter, on_delete=models.CASCADE)
     booked = models.BooleanField()

@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
-from .models import Appointment, BloodCenter, User, Website_info, Coupon, Badge
+from .models import Appointment, BloodCenter, User, Website_info, Coupon
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'password', 'email', 'times_donated', 'time_since_last', 'experience']
+        fields = ['username', 'password', 'email', 'times_donated', 'time_since_last', 'experience', 'badges']
 
     def create(self, validated_data):
         user = User(
@@ -32,7 +32,7 @@ class BloodCenterSerializer(serializers.ModelSerializer):
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointment
-        fields = ['user', 'center', 'booked', 'start_time', 'end_time', 'donation_type', 'reward']
+        fields = ['id', 'user', 'center', 'booked', 'start_time', 'end_time', 'donation_type', 'reward']
 
 class CouponSerializer(serializers.ModelSerializer):
     class Meta:

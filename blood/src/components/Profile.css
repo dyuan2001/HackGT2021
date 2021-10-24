@@ -1,0 +1,41 @@
+.titles {
+    text-align: center;
+    font-size: 500%;
+
+    
+
+}
+#background_bar{
+    /* The image used */
+    background: url("../assets/profile_bkgd.png");
+    /* Full height */
+    width: 100vw;
+    height: 50vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top:-50%;
+}
+
+#three-block {
+    padding-top: 50px;
+    margin: auto;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#blood_img {
+    background-color: 'red';
+    background: url("../assets/profile_blood.png");
+}
+
+#blood_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
